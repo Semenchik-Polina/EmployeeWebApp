@@ -9,14 +9,20 @@ const CandidateRow = (props) => {
             <div className="cell" data-title="Candidate ID">
                 {candidate.CandidateID}
             </div>
+            <div className="cell" data-title="Full Name">
+                {candidate.FullName}
+            </div>
             <div className="cell" data-title="Vacancy">
                 {candidate.Vacancy}
             </div>
             <div className="cell" data-title="Interview Begins At">
-                {candidate.InterviewBeginsAt ? new Intl.DateTimeFormat('en-GB').format(candidate.InterviewBeginsAt.value) : ""}
-            </div>
-            <div className="cell" data-title="Full Name">
-                {candidate.FullName}
+                {candidate.InterviewBeginsAt ? new Intl.DateTimeFormat('en-GB', {
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                    }).format(candidate.InterviewBeginsAt) : ""}
             </div>
             <div className="cell" data-title="Email">
                 {candidate.Email}

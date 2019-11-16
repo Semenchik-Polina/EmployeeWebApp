@@ -9,11 +9,24 @@ class EmployeeTable extends Component {
 
     componentDidMount() {
         axios.get("employees").then(response => {
-            console.log(response.data)
+            let employees = response.data;
+            employees.forEach(employee => {
+                employee.HiredAt = this.parseDate(employee.HiredAt);
+                if (employee.FiredAt) {
+                    employee.FiredAt = this.parseDate(employee.FiredAt);
+                }
+            });
             this.setState({
-                employees: response.data
+                employees: employees
             });
         });
+    }
+
+    parseDate(date) {
+        // received date format is "\/Date(1239018869048)\/" 
+        // [.substr(6)] takes out the "/Date(" part
+        // [.parseInt] ignores the non-number characters at the end
+        return new Date(parseInt(date.substr(6)));
     }
 
     render() {
@@ -24,11 +37,11 @@ class EmployeeTable extends Component {
 
                 <div className="trow header">
                     <div className="cell">Employee ID</div>
+                    <div className="cell">Full Name</div>
                     <div className="cell">Job Title</div>
                     <div className="cell">Salary</div>
                     <div className="cell">Hired At</div>
                     <div className="cell">Fired At</div>
-                    <div className="cell">Full Name</div>
                     <div className="cell">Email</div>
                     <div className="cell">Phone number</div>
                 </div>
