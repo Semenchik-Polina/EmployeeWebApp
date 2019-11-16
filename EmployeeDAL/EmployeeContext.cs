@@ -1,6 +1,5 @@
 ﻿using EmployeeDAL.Entities;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 
 namespace EmployeeDAL
 {
@@ -18,14 +17,14 @@ namespace EmployeeDAL
             //base.OnModelCreating(modelBuilder);
             
             modelBuilder.Entity<Employee>()
-                .HasRequired<Person>(employee => employee.Person)
+                .HasRequired(employee => employee.Person)
                 .WithMany(person => person.Employees)
-                .HasForeignKey<int>(employee => employee.FK_PersonID);
+                .HasForeignKey(employee => employee.FK_PersonID);
 
             modelBuilder.Entity<Candidate>()
-                .HasRequired<Person>(candidate => candidate.Person)
+                .HasRequired(candidate => candidate.Person)
                 .WithMany(person => person.Candidates)
-                .HasForeignKey<int>(candidate => candidate.FK_PersonID);
+                .HasForeignKey(candidate => candidate.FK_PersonID);
         }
     }
 }

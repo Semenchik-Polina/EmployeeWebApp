@@ -7,7 +7,7 @@ namespace EmployeeWebApp.Models
         public int EmployeeID { get; set; }
         public string JobTitle { get; set; }
         public int Salary { get; set; }
-        public DateTime? HiredAt { get; set; }
+        public DateTime HiredAt { get; set; }
         public DateTime? FiredAt { get; set; }
 
         public string FullName { get; set; }
