@@ -27,7 +27,7 @@ $ npm install --save-dev @babel/cli @babel/core @babel/plugin-proposal-class-pro
 $ npm install react react-dom axios
 $ npm start
 ```
-4. Open EmployeeWebApp/EmployeeWeb.csproj file with Notepad and add the following peace of code before the last <Import Project=...>
+4. Open EmployeeWebApp/EmployeeWeb.csproj file with Notepad and add the following peace of code before the last \<Import Project=...\>
 
 ```sh
 <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
@@ -43,7 +43,7 @@ $ npm start
 If you're getting message: 
 >A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 50 - Local Database Runtime error occurred. Cannot create an automatic instance. See the Windows Application event log for error details.
 
-Try to change Web.config: 
+Change Web.config: 
 
 ```sh
 $ <connectionStrings>
